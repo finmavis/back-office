@@ -20,12 +20,22 @@ If you're using `VSCode` as your editor, you could install these **extensions** 
 1. [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - A pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript. Maintain our code quality with ease.
 2. [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - Automatically format our code so we don't have to worry about the code style.
 
-### Installing
+### Installing and Starting Development Server
 
 After cloning the repo, to install all dependencies, run the command below:
 
-```
+```bash
 npm install
+```
+
+After installing all the dependencies is complete, to start the development server run the command below:
+
+```bash
+# If you're using npm
+npm run start
+
+# If you're using yarn
+yarn start
 ```
 
 ## Scripts
