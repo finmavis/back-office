@@ -56,7 +56,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Credentials
 
-If you wondering where to find the initial credentials to log in to the application. You could find the initial credentials at `/src/shared/constants/credentials.ts`. Or if you didn't wanna search and open the file, here's the demo account:
+If you wondering where to find the initial credentials to log in to the application. You could find the initial credentials at `/src/app/shared/constants/credentials.ts`. Or if you didn't wanna search and open the file, here's the demo account:
 
 ```
 username: demo
