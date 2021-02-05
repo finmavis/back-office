@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+
+<section class="container">
+  <div *ngIf="!employee" class="not-found-container">
+    <h2>Couldnt find employee with id: {{ employeeQueryId }}</h2>
+    <a routerLink="/employees">Back to employees</a>
+  </div>
+  <div *ngIf="employee">
+    <h2 class="title">Employee Detail</h2>
+    <div class="column">
+      <p>ID:</p>
+      <p>{{ employee.id }}</p>
+
+      <p>Username:</p>
+      <p>{{ employee.username }}</p>
+
+      <p>First Name:</p>
+      <p>{{ employee.firstName }}</p>
+
+      <p>Last Name:</p>
+      <p>{{ employee.lastName }}</p>
+
+      <p>Email:</p>
+      <p>{{ employee.email }}</p>
+
+      <p>Birth Date:</p>
+      <p>{{ employee.birthDate | date: 'longDate' }}</p>
+
+      <p>Basic Salary:</p>
+      <p>{{ employee.basicSalary | currency: 'Rp. ' }}</p>
+
+      <p>Status:</p>
+      <p>{{ employee.status }}</p>
+
+      <p>Group:</p>
+      <p>{{ employee.group }}</p>
+
+      <p>Description:</p>
+      <p>{{ employee.description | date: 'longDate' }}</p>
+    </div>
+    <a
+      routerLink="/employees"
+      mat-raised-button
+      color="primary"
+      class="confirm"
+    >
+      Ok
+    </a>
+  </div>
+</section>

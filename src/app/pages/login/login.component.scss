@@ -1,0 +1,46 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+  background-color: #eee;
+}
+
+.card-container {
+  max-width: 25rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-header {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+
+  ::ng-deep .mat-card-header-text {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  ::ng-deep .mat-card-title {
+    font-size: 1.5rem;
+  }
+}
+
+.field {
+  width: 100%;
+}
+
+.card-action {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.login-error {
+  text-align: center;
+}

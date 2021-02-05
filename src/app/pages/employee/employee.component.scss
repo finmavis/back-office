@@ -1,0 +1,33 @@
+.container {
+  padding: 1rem;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.not-found-container {
+  text-align: center;
+
+  & a {
+    text-decoration: none;
+    color: currentColor;
+  }
+}
+
+.title {
+  text-align: center;
+}
+
+.column {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+
+  @media (min-width: 450px) {
+    grid-template-columns: 150px 1fr;
+  }
+}
+
+.confirm {
+  width: 100%;
+  margin-top: 1rem;
+}

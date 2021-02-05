@@ -1,0 +1,198 @@
+<app-navbar></app-navbar>
+
+<section class="container">
+  <form [formGroup]="addEmployeeForm" (ngSubmit)="onSubmit()">
+    <h3 class="title">Add new employee</h3>
+    <div class="field-container">
+      <div>
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Username"
+            formControlName="username"
+            autocomplete="off"
+            required
+          />
+          <mat-error *ngIf="hasError('username', 'required')">
+            Username is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="First Name"
+            formControlName="firstName"
+            autocomplete="off"
+            required
+          />
+          <mat-error *ngIf="hasError('firstName', 'required')">
+            First Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Last Name"
+            formControlName="lastName"
+            autocomplete="off"
+            required
+          />
+          <mat-error *ngIf="hasError('lastName', 'required')">
+            Last Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+            autocomplete="off"
+            required
+          />
+          <mat-error *ngIf="hasError('email', 'required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="hasError('email', 'email')">
+            Please enter a valid email
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>Birth Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="birthDatepicker"
+            formControlName="birthDate"
+            [max]="maxDate"
+            autocomplete="off"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="birthDatepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #birthDatepicker></mat-datepicker>
+          <mat-error *ngIf="hasError('birthDate', 'required')">
+            Birth date is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>Basic Salary</mat-label>
+          <span matPrefix>Rp. &nbsp;</span>
+          <input
+            matInput
+            type="number"
+            min="0"
+            placeholder="Basic Salary"
+            formControlName="basicSalary"
+            autocomplete="off"
+            required
+          />
+          <mat-error *ngIf="hasError('basicSalary', 'required')">
+            Basic salary is required
+          </mat-error>
+          <mat-error *ngIf="hasError('basicSalary', 'min')">
+            Basic salary minimum is 0
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>Status</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Status"
+            formControlName="status"
+            autocomplete="off"
+            required
+          />
+          <mat-error *ngIf="hasError('status', 'required')">
+            Status is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>Group</mat-label>
+          <mat-select formControlName="group">
+            <mat-form-field appearance="fill" class="field">
+              <input
+                matInput
+                placeholder="Search"
+                (keyup)="onSearchGroup($event)"
+                class="field"
+              />
+            </mat-form-field>
+            <mat-option *ngFor="let group of filteredGroups" [value]="group">
+              {{ group }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="hasError('group', 'required')">
+            Group is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>Description</mat-label>
+          <input
+            matInput
+            [matDatepicker]="descriptionPicker"
+            formControlName="description"
+            [max]="maxDate"
+            autocomplete="off"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="descriptionPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #descriptionPicker></mat-datepicker>
+          <mat-error *ngIf="hasError('description', 'required')">
+            Description is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="login-error">
+        <mat-error *ngIf="addEmployeeFormError">
+          You have entered an invalid username or password
+        </mat-error>
+      </div>
+    </div>
+    <div class="actions-container">
+      <button
+        mat-raised-button
+        color="primary"
+        class="saveButton"
+        (click)="onSubmit()"
+        [disabled]="!addEmployeeForm.valid"
+      >
+        Save
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        class="cancelButton"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</section>

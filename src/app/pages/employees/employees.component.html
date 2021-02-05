@@ -1,0 +1,122 @@
+<app-navbar></app-navbar>
+
+<section class="container">
+  <div class="header-container">
+    <a routerLink="/employee/add" mat-raised-button color="primary">
+      Add new employee
+    </a>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        (keyup)="onFilter($event)"
+        placeholder="Search"
+        autocomplete="off"
+        [value]="employees.filter"
+      />
+    </mat-form-field>
+  </div>
+  <div class="table-container">
+    <table
+      mat-table
+      [dataSource]="employees"
+      matSort
+      matSortActive="firstName"
+      matSortDirection="asc"
+      matSortDisableClear
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="firstName">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          class="firstname-field"
+        >
+          Firstname
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <a routerLink="/employee/{{ element.id }}">
+            {{ element.firstName }}
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          class="lastname-field"
+        >
+          Lastname
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <a routerLink="/employee/{{ element.id }}">
+            {{ element.lastName }}
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          class="username-field"
+        >
+          Username
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <a routerLink="/employee/{{ element.id }}">
+            {{ element.username }}
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          class="email-field"
+        >
+          Email
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <a routerLink="/employee/{{ element.id }}">
+            {{ element.email }}
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="actions-field">Actions</th>
+        <td mat-cell *matCellDef="let element" class="actions-container">
+          <button
+            mat-raised-button
+            color="basic"
+            (click)="openSnackBar('Editing', 'Close', element.firstName)"
+            class="edit-button"
+          >
+            Edit
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="openSnackBar('Deleting', 'Undo', element.firstName)"
+          >
+            Delete
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <mat-paginator
+    [pageSizeOptions]="[10, 15, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</section>

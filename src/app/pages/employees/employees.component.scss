@@ -1,0 +1,100 @@
+.container {
+  display: grid;
+  overflow: auto;
+  position: relative;
+  padding: 1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  position: relative;
+}
+
+table {
+  width: max-content;
+  min-width: 100%;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 0.5rem 0;
+
+  @media (min-width: 400px) {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  ::ng-deep {
+    mat-form-field.mat-form-field {
+      @media (min-width: 400px) {
+        margin-left: 1rem;
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+
+th {
+  background: #bbb;
+  font-weight: bold;
+}
+
+::ng-deep {
+  td a {
+    color: currentColor;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: currentColor;
+    }
+  }
+}
+
+.firstname-field,
+.lastname-field,
+.username-field {
+  min-width: 9.375rem;
+}
+
+.email-field {
+  min-width: 15.625rem;
+}
+
+.actions-field {
+  min-width: 6rem;
+}
+
+.actions-container {
+  & > *:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+}
+
+.edit-button {
+  background-color: #ffa726;
+}
+
+::ng-deep .yellow-snackbar {
+  color: #000;
+  background-color: #ffa726;
+
+  .mat-button-wrapper {
+    color: #000;
+  }
+}
+
+::ng-deep .red-snackbar {
+  color: #fff;
+  background-color: #f44336;
+
+  .mat-button-wrapper {
+    color: #fff;
+  }
+}
